@@ -103,7 +103,9 @@ def test_to_jams():
         assert "frequency" in f0.value
         assert "index" in f0.value
         assert "voiced" in f0.value
-        assert math.isclose(f0.value["frequency"],expected_f0s[i]["frequency"], rel_tol=1e-12)
+        assert math.isclose(
+            f0.value["frequency"], expected_f0s[i]["frequency"], rel_tol=1e-12
+        )
         assert f0.value["index"] == expected_f0s[i]["index"]
         assert f0.value["voiced"] == expected_f0s[i]["voiced"]
     # assert [f0.value for f0 in f0s] == [
