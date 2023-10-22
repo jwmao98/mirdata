@@ -13,24 +13,32 @@ def test_track():
 
     expected_attributes = {
         "track_id": "2",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/salami/"), "audio/2.mp3"
+        "audio_path": os.path.normpath(
+            os.path.join("tests/resources/mir_datasets/salami/", "audio/2.mp3")
         ),
-        "sections_annotator1_uppercase_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/salami/"),
-            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        "sections_annotator1_uppercase_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/salami/",
+                "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+            )
         ),
-        "sections_annotator1_lowercase_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/salami/"),
-            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+        "sections_annotator1_lowercase_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/salami/",
+                "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_lowercase.txt",
+            )
         ),
-        "sections_annotator2_uppercase_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/salami/"),
-            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+        "sections_annotator2_uppercase_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/salami/",
+                "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_uppercase.txt",
+            )
         ),
-        "sections_annotator2_lowercase_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/salami/"),
-            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+        "sections_annotator2_lowercase_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/salami/",
+                "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile2_lowercase.txt",
+            )
         ),
         "source": "Codaich",
         "annotator_1_id": "5",
@@ -79,11 +87,15 @@ def test_track():
     assert track._track_paths == {
         "audio": ["audio/192.mp3", "d954d5dc9f17d66155d3310d838756b8"],
         "annotator_1_uppercase": [
-            "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_uppercase.txt",
+            os.path.normpath(
+                "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_uppercase.txt"
+            ),
             "4d268cfd27fe011dbe579f25f8d125ce",
         ],
         "annotator_1_lowercase": [
-            "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_lowercase.txt",
+            os.path.normpath(
+                "salami-data-public-hierarchy-corrections/annotations/192/parsed/textfile1_lowercase.txt"
+            ),
             "6640237e7844d0d9d37bf21cf96a2690",
         ],
         "annotator_2_uppercase": [None, None],
@@ -104,11 +116,15 @@ def test_track():
         "annotator_1_uppercase": [None, None],
         "annotator_1_lowercase": [None, None],
         "annotator_2_uppercase": [
-            "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_uppercase.txt",
+            os.path.normpath(
+                "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_uppercase.txt"
+            ),
             "e4a268342a45fdffd8ec9c3b8287ad8b",
         ],
         "annotator_2_lowercase": [
-            "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_lowercase.txt",
+            os.path.normpath(
+                "salami-data-public-hierarchy-corrections/annotations/1015/parsed/textfile2_lowercase.txt"
+            ),
             "201642fcea4a27c60f7b48de46a82234",
         ],
     }
@@ -121,7 +137,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/salami"
+    data_home = os.path.normpath("tests/resources/mir_datasets/salami")
     dataset = salami.Dataset(data_home)
     track = dataset.track("2")
     jam = track.to_jams()
@@ -182,9 +198,11 @@ def test_to_jams():
 
 def test_load_sections():
     # load a file which exists
-    sections_path = (
-        "tests/resources/mir_datasets/salami/"
-        + "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt"
+    sections_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/salami/",
+            "salami-data-public-hierarchy-corrections/annotations/2/parsed/textfile1_uppercase.txt",
+        )
     )
     section_data = salami.load_sections(sections_path)
 
@@ -212,7 +230,7 @@ def test_load_sections():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/salami"
+    data_home = os.path.normpath("tests/resources/mir_datasets/salami")
     dataset = salami.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["2"] == {

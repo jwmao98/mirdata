@@ -11,9 +11,11 @@ def test_track():
 
     expected_attributes = {
         "track_id": "d07b1fc0-567d-52c2-fef4-239f31c9d40e",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/medley_solos_db/"),
-            "audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/medley_solos_db/",
+                "audio/Medley-solos-DB_validation-3_d07b1fc0-567d-52c2-fef4-239f31c9d40e.wav",
+            )
         ),
         "instrument": "flute",
         "instrument_id": 3,
@@ -31,7 +33,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/medley_solos_db"
+    data_home = os.path.normpath("tests/resources/mir_datasets/medley_solos_db")
     dataset = medley_solos_db.Dataset(data_home)
     track = dataset.track("d07b1fc0-567d-52c2-fef4-239f31c9d40e")
     jam = track.to_jams()

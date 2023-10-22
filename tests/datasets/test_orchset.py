@@ -15,17 +15,22 @@ def test_track():
 
     expected_attributes = {
         "track_id": "Beethoven-S3-I-ex1",
-        "audio_path_mono": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/orchset/"),
-            "audio/mono/Beethoven-S3-I-ex1.wav",
+        "audio_path_mono": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/orchset/",
+                "audio/mono/Beethoven-S3-I-ex1.wav",
+            )
         ),
-        "audio_path_stereo": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/orchset/"),
-            "audio/stereo/Beethoven-S3-I-ex1.wav",
+        "audio_path_stereo": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/orchset/",
+                "audio/stereo/Beethoven-S3-I-ex1.wav",
+            )
         ),
-        "melody_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/orchset/"),
-            "GT/Beethoven-S3-I-ex1.mel",
+        "melody_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/orchset/", "GT/Beethoven-S3-I-ex1.mel"
+            )
         ),
         "composer": "Beethoven",
         "work": "S3-I",
@@ -58,7 +63,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/orchset"
+    data_home = os.path.normpath("tests/resources/mir_datasets/orchset")
     dataset = orchset.Dataset(data_home)
     track = dataset.track("Beethoven-S3-I-ex1")
     jam = track.to_jams()
@@ -78,7 +83,9 @@ def test_to_jams():
 
 def test_load_melody():
     # load a file which exists
-    melody_path = "tests/resources/mir_datasets/orchset/GT/Beethoven-S3-I-ex1.mel"
+    melody_path = os.path.normpath(
+        "tests/resources/mir_datasets/orchset/GT/Beethoven-S3-I-ex1.mel"
+    )
     melody_data = orchset.load_melody(melody_path)
 
     # check types
@@ -94,7 +101,7 @@ def test_load_melody():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/orchset"
+    data_home = os.path.normpath("tests/resources/mir_datasets/orchset")
     dataset = orchset.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["Beethoven-S3-I-ex1"] == {
@@ -170,12 +177,14 @@ def test_load_metadata():
 
 
 def test_download(httpserver):
-    data_home = "tests/resources/mir_datasets/orchset_download"
+    data_home = os.path.normpath("tests/resources/mir_datasets/orchset_download")
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     httpserver.serve_content(
-        open("tests/resources/download/Orchset_dataset_0.zip", "rb").read()
+        open(
+            os.path.normpath("tests/resources/download/Orchset_dataset_0.zip"), "rb"
+        ).read()
     )
 
     remotes = {

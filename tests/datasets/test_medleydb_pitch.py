@@ -14,17 +14,23 @@ def test_track():
 
     expected_attributes = {
         "track_id": "AClassicEducation_NightOwl_STEM_08",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
-            "audio/AClassicEducation_NightOwl_STEM_08.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/medleydb_pitch/",
+                "audio/AClassicEducation_NightOwl_STEM_08.wav",
+            )
         ),
-        "pitch_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
-            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        "pitch_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/medleydb_pitch/",
+                "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+            )
         ),
-        "notes_pyin_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/medleydb_pitch/"),
-            "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        "notes_pyin_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/medleydb_pitch/",
+                "medleydb-pitch-pyin-notes/AClassicEducation_NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+            )
         ),
         "instrument": "male singer",
         "artist": "AClassicEducation",
@@ -46,7 +52,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
+    data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_pitch")
     dataset = medleydb_pitch.Dataset(data_home)
     track = dataset.track("AClassicEducation_NightOwl_STEM_08")
     jam = track.to_jams()
@@ -66,9 +72,11 @@ def test_to_jams():
 
 def test_load_pitch():
     # load a file which exists
-    pitch_path = (
-        "tests/resources/mir_datasets/medleydb_pitch/"
-        + "pitch/AClassicEducation_NightOwl_STEM_08.csv"
+    pitch_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/medleydb_pitch/",
+            "pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        )
     )
     pitch_data = medleydb_pitch.load_pitch(pitch_path)
 
@@ -87,10 +95,12 @@ def test_load_pitch():
 
 
 def test_load_notes():
-    note_path = (
-        "tests/resources/mir_datasets/medleydb_pitch/"
-        + "medleydb-pitch-pyin-notes/AClassicEducation_"
-        + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv"
+    note_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/medleydb_pitch/",
+            "medleydb-pitch-pyin-notes/AClassicEducation_"
+            + "NightOwl_STEM_08_vamp_pyin_pyin_notes.csv",
+        )
     )
     note_data = medleydb_pitch.load_notes(note_path)
 
@@ -105,22 +115,28 @@ def test_load_notes():
     assert np.allclose(note_data.pitches, np.array([229.67, 193.925]))
     assert note_data.confidence is None
 
-    note_path = (
-        "tests/resources/mir_datasets/medleydb_pitch/"
-        + "medleydb-pitch-pyin-notes/AimeeNorwich_"
-        + "Flying_STEM_15_vamp_pyin_pyin_notes.csv"
+    note_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/medleydb_pitch/",
+            "medleydb-pitch-pyin-notes/AimeeNorwich_"
+            + "Flying_STEM_15_vamp_pyin_pyin_notes.csv",
+        )
     )
     note_data = medleydb_pitch.load_notes(note_path)
     assert note_data is None
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/medleydb_pitch"
+    data_home = os.path.normpath("tests/resources/mir_datasets/medleydb_pitch")
     dataset = medleydb_pitch.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["AClassicEducation_NightOwl_STEM_08"] == {
-        "audio_path": "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav",
-        "pitch_path": "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv",
+        "audio_path": os.path.normpath(
+            "medleydb_pitch/audio/AClassicEducation_NightOwl_STEM_08.wav"
+        ),
+        "pitch_path": os.path.normpath(
+            "medleydb_pitch/pitch/AClassicEducation_NightOwl_STEM_08.csv"
+        ),
         "instrument": "male singer",
         "artist": "AClassicEducation",
         "title": "NightOwl",

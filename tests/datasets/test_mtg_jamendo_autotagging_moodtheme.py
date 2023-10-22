@@ -15,11 +15,9 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": (
+        "audio_path": os.path.normpath(
             os.path.join(
-                os.path.normpath(
-                    "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/"
-                ),
+                "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme/",
                 "audios/48/948.mp3",
             )
         ),
@@ -45,7 +43,9 @@ def test_track():
 
 def test_track_properties_and_attributes():
     default_trackid = "track_0000948"
-    data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    )
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
     track = dataset.track(default_trackid)
 
@@ -58,7 +58,9 @@ def test_track_properties_and_attributes():
 
 def test_to_jams():
     default_trackid = "track_0000948"
-    data_home = "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    data_home = os.path.normpath(
+        "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+    )
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(data_home)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
@@ -71,7 +73,9 @@ def test_to_jams():
 
 def test_get_track_splits():
     dataset = mtg_jamendo_autotagging_moodtheme.Dataset(
-        "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+        os.path.normpath(
+            "tests/resources/mir_datasets/mtg_jamendo_autotagging_moodtheme"
+        )
     )
     for i in range(5):
         splits = dataset.get_track_splits(split_number=i)

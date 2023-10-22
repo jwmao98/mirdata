@@ -17,30 +17,42 @@ def test_track():
     expected_attributes = {
         "track_id": "beethoven-violin",
         "audio_paths": [
-            os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-                "audio/beethoven/violin1.wav",
+            os.path.normpath(
+                os.path.join(
+                    "tests/resources/mir_datasets/phenicx_anechoic/",
+                    "audio/beethoven/violin1.wav",
+                )
             ),
-            os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-                "audio/beethoven/violin2.wav",
+            os.path.normpath(
+                os.path.join(
+                    "tests/resources/mir_datasets/phenicx_anechoic/",
+                    "audio/beethoven/violin2.wav",
+                )
             ),
-            os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-                "audio/beethoven/violin3.wav",
+            os.path.normpath(
+                os.path.join(
+                    "tests/resources/mir_datasets/phenicx_anechoic/",
+                    "audio/beethoven/violin3.wav",
+                )
             ),
-            os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-                "audio/beethoven/violin4.wav",
+            os.path.normpath(
+                os.path.join(
+                    "tests/resources/mir_datasets/phenicx_anechoic/",
+                    "audio/beethoven/violin4.wav",
+                )
             ),
         ],
-        "notes_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-            "annotations/beethoven/violin.txt",
+        "notes_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/phenicx_anechoic/",
+                "annotations/beethoven/violin.txt",
+            )
         ),
-        "notes_original_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic/"),
-            "annotations/beethoven/violin_o.txt",
+        "notes_original_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/phenicx_anechoic/",
+                "annotations/beethoven/violin_o.txt",
+            )
         ),
         "instrument": "violin",
         "piece": "beethoven",
@@ -62,7 +74,7 @@ def test_track():
 
 def test_get_audio_voice():
     default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     track = dataset.track(default_trackid)
 
@@ -77,7 +89,7 @@ def test_get_audio_voice():
 
 def test_to_jams():
     default_trackid = "beethoven-violin"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
@@ -100,7 +112,7 @@ def test_to_jams():
 
 def test_load_score():
     # load a file which exists
-    score_path = (
+    score_path = os.path.normpath(
         "tests/resources/mir_datasets/phenicx_anechoic/annotations/beethoven/violin.txt"
     )
     note_data = phenicx_anechoic.load_score(score_path)
@@ -120,7 +132,7 @@ def test_load_score():
 
 def test_multitrack():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
     # import pdb;pdb.set_trace()
@@ -177,7 +189,7 @@ def test_multitrack():
 
 def test_get_audio_for_instrument():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
@@ -190,7 +202,7 @@ def test_get_audio_for_instrument():
 
 def test_get_audio_for_section():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
@@ -203,7 +215,7 @@ def test_get_audio_for_section():
 
 def test_get_notes_target():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
@@ -237,7 +249,7 @@ def test_get_notes_target():
 
 def test_get_notes_for_instrument():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 
@@ -260,7 +272,7 @@ def test_get_notes_for_instrument():
 
 def test_get_notes_for_section():
     default_trackid = "beethoven"
-    data_home = "tests/resources/mir_datasets/phenicx_anechoic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/phenicx_anechoic")
     dataset = phenicx_anechoic.Dataset(data_home)
     mtrack = dataset.multitrack(default_trackid)
 

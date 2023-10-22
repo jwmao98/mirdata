@@ -16,28 +16,38 @@ def test_track():
 
     expected_attributes = {
         "track_id": "1",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
-            "Audio/vocadito_1.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/vocadito/",
+                "Audio/vocadito_1.wav",
+            )
         ),
         "singer_id": "S1",
         "language": "Tagalog",
         "average_pitch_midi": 50,
-        "f0_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
-            "Annotations/F0/vocadito_1_f0.csv",
+        "f0_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/vocadito/",
+                "Annotations/F0/vocadito_1_f0.csv",
+            )
         ),
-        "lyrics_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
-            "Annotations/Lyrics/vocadito_1_lyrics.txt",
+        "lyrics_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/vocadito/",
+                "Annotations/Lyrics/vocadito_1_lyrics.txt",
+            )
         ),
-        "notes_a1_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
-            "Annotations/Notes/vocadito_1_notesA1.csv",
+        "notes_a1_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/vocadito/",
+                "Annotations/Notes/vocadito_1_notesA1.csv",
+            )
         ),
-        "notes_a2_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/vocadito/"),
-            "Annotations/Notes/vocadito_1_notesA2.csv",
+        "notes_a2_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/vocadito/",
+                "Annotations/Notes/vocadito_1_notesA2.csv",
+            )
         ),
     }
 
@@ -75,7 +85,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/vocadito"
+    data_home = os.path.normpath("tests/resources/mir_datasets/vocadito")
     default_trackid = "1"
     dataset = vocadito.Dataset(data_home)
     track = dataset.track(default_trackid)
@@ -92,7 +102,9 @@ def test_to_jams():
 
 
 def test_load_f0():
-    f0_path = "tests/resources/mir_datasets/vocadito/Annotations/F0/vocadito_1_f0.csv"
+    f0_path = os.path.normpath(
+        "tests/resources/mir_datasets/vocadito/Annotations/F0/vocadito_1_f0.csv"
+    )
     f0_data = vocadito.load_f0(f0_path)
 
     # check types
@@ -113,7 +125,7 @@ def test_load_f0():
 
 
 def test_load_notes():
-    notes_path = (
+    notes_path = os.path.normpath(
         "tests/resources/mir_datasets/vocadito/Annotations/Notes/vocadito_1_notesA1.csv"
     )
     note_data = vocadito.load_notes(notes_path)
@@ -135,7 +147,7 @@ def test_load_notes():
 
 
 def test_load_lyrics():
-    lyrics_path = (
+    lyrics_path = os.path.normpath(
         "tests/resources/mir_datasets/vocadito/Annotations/Lyrics/vocadito_1_lyrics.txt"
     )
     lyrics_data = vocadito.load_lyrics(lyrics_path)
@@ -157,7 +169,7 @@ def test_load_lyrics():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/vocadito"
+    data_home = os.path.normpath("tests/resources/mir_datasets/vocadito")
     dataset = vocadito.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["1"] == {

@@ -10,18 +10,23 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
-    data_home = "tests/resources/mir_datasets/maestro"
+    data_home = os.path.normpath("tests/resources/mir_datasets/maestro")
     dataset = maestro.Dataset(data_home)
     track = dataset.track(default_trackid)
 
     expected_attributes = {
         "track_id": "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1",
-        "midi_path": os.path.join(
-            data_home,
-            "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
+        "midi_path": os.path.normpath(
+            os.path.join(
+                data_home,
+                "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.midi",
+            )
         ),
-        "audio_path": os.path.join(
-            data_home, "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav"
+        "audio_path": os.path.normpath(
+            os.path.join(
+                data_home,
+                "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1.wav",
+            )
         ),
         "canonical_composer": "Alban Berg",
         "canonical_title": "Sonata Op. 1",
@@ -56,7 +61,7 @@ def test_track():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/maestro"
+    data_home = os.path.normpath("tests/resources/mir_datasets/maestro")
     dataset = maestro.Dataset(data_home)
     metadata = dataset._metadata
     default_trackid = "2018/MIDI-Unprocessed_Chamber3_MID--AUDIO_10_R3_2018_wav--1"
@@ -73,12 +78,14 @@ def test_load_metadata():
 
 
 def test_download_partial(httpserver):
-    data_home = "tests/resources/mir_datasets/maestro_download"
+    data_home = os.path.normpath("tests/resources/mir_datasets/maestro_download")
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     httpserver.serve_content(
-        open("tests/resources/download/maestro-v2.0.0.json", "r").read()
+        open(
+            os.path.normpath("tests/resources/download/maestro-v2.0.0.json"), "r"
+        ).read()
     )
     remotes = {
         "all": download_utils.RemoteFileMetadata(
@@ -129,13 +136,15 @@ def test_download_partial(httpserver):
 
 
 def test_download(httpserver):
-    data_home = "tests/resources/mir_datasets/maestro_download"
+    data_home = os.path.normpath("tests/resources/mir_datasets/maestro_download")
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     # download the full dataset
     httpserver.serve_content(
-        open("tests/resources/download/maestro-v2.0.0.zip", "rb").read()
+        open(
+            os.path.normpath("tests/resources/download/maestro-v2.0.0.zip"), "rb"
+        ).read()
     )
 
     remotes = {
@@ -151,19 +160,25 @@ def test_download(httpserver):
     dataset.download(None, False, False)
 
     assert os.path.exists(data_home)
-    assert not os.path.exists(os.path.join(data_home, "maestro-v2.0.0"))
+    assert not os.path.exists(
+        os.path.normpath(os.path.join(data_home, "maestro-v2.0.0"))
+    )
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+            )
         )
     )
     assert os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+            )
         )
     )
 
@@ -196,7 +211,9 @@ def test_download(httpserver):
 
     # download the midi-only zip
     httpserver.serve_content(
-        open("tests/resources/download/maestro-v2.0.0-midi.zip", "rb").read()
+        open(
+            os.path.normpath("tests/resources/download/maestro-v2.0.0-midi.zip"), "rb"
+        ).read()
     )
 
     remotes = {
@@ -215,15 +232,19 @@ def test_download(httpserver):
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert not os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+            )
         )
     )
     assert os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+            )
         )
     )
 
@@ -235,7 +256,9 @@ def test_download(httpserver):
 
     # download only the metadata
     httpserver.serve_content(
-        open("tests/resources/download/maestro-v2.0.0.json", "rb").read()
+        open(
+            os.path.normpath("tests/resources/download/maestro-v2.0.0.json"), "rb"
+        ).read()
     )
 
     remotes = {
@@ -253,15 +276,19 @@ def test_download(httpserver):
 
     assert os.path.exists(os.path.join(data_home, "maestro-v2.0.0.json"))
     assert not os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.wav",
+            )
         )
     )
     assert not os.path.exists(
-        os.path.join(
-            data_home,
-            "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+        os.path.normpath(
+            os.path.join(
+                data_home,
+                "2004/MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_04_Track04_wav.midi",
+            )
         )
     )
 

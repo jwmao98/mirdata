@@ -13,21 +13,29 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/queen/"),
-            "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/queen/",
+                "audio/Greatest Hits I/01 Bohemian Rhapsody.flac",
+            )
         ),
-        "chords_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/queen/"),
-            "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "chords_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/queen/",
+                "annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+            )
         ),
-        "keys_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/queen/"),
-            "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "keys_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/queen/",
+                "annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/queen/"),
-            "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/queen/",
+                "annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab",
+            )
         ),
         "title": "01 Bohemian Rhapsody",
         "track_id": "0",
@@ -50,7 +58,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/queen"
+    data_home = os.path.normpath("tests/resources/mir_datasets/queen")
     dataset = queen.Dataset(data_home)
     track = dataset.track("0")
     jam = track.to_jams()
@@ -129,7 +137,9 @@ def test_to_jams():
 
 
 def test_load_chords():
-    chords_path = "tests/resources/mir_datasets/queen/annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    chords_path = os.path.normpath(
+        "tests/resources/mir_datasets/queen/annotations/chordlab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    )
     chord_data = queen.load_chords(chords_path)
 
     assert type(chord_data) == annotations.ChordData
@@ -144,7 +154,9 @@ def test_load_chords():
 
 
 def test_load_key():
-    key_path = "tests/resources/mir_datasets/queen/annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    key_path = os.path.normpath(
+        "tests/resources/mir_datasets/queen/annotations/keylab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    )
     key_data = queen.load_key(key_path)
 
     assert type(key_data) == annotations.KeyData
@@ -158,7 +170,9 @@ def test_load_key():
 
 
 def test_load_sections():
-    sections_path = "tests/resources/mir_datasets/queen/annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    sections_path = os.path.normpath(
+        "tests/resources/mir_datasets/queen/annotations/seglab/Queen/Greatest Hits I/01 Bohemian Rhapsody.lab"
+    )
     section_data = queen.load_sections(sections_path)
 
     assert type(section_data) == annotations.SectionData

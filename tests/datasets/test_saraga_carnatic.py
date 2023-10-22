@@ -13,76 +13,104 @@ def test_track():
 
     expected_attributes = {
         "track_id": "116_Bhuvini_Dasudane",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.mp3.mp3",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.mp3.mp3",
+            )
         ),
-        "audio_ghatam_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-ghatam.mp3",
+        "audio_ghatam_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-ghatam.mp3",
+            )
         ),
-        "audio_mridangam_left_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-left.mp3",
+        "audio_mridangam_left_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-left.mp3",
+            )
         ),
-        "audio_mridangam_right_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-right.mp3",
+        "audio_mridangam_right_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-mridangam-right.mp3",
+            )
         ),
-        "audio_violin_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-violin.mp3",
+        "audio_violin_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-violin.mp3",
+            )
         ),
         "audio_vocal_s_path": None,
-        "audio_vocal_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-vocal.mp3",
+        "audio_vocal_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.multitrack-vocal.mp3",
+            )
         ),
-        "ctonic_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.ctonic.txt",
+        "ctonic_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.ctonic.txt",
+            )
         ),
-        "pitch_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.pitch.txt",
+        "pitch_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.pitch.txt",
+            )
         ),
-        "pitch_vocal_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.pitch-vocal.txt",
+        "pitch_vocal_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.pitch-vocal.txt",
+            )
         ),
-        "tempo_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.tempo-manual.txt",
+        "tempo_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.tempo-manual.txt",
+            )
         ),
-        "sama_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.sama-manual.txt",
+        "sama_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.sama-manual.txt",
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.sections-manual-p.txt",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.sections-manual-p.txt",
+            )
         ),
-        "phrases_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.mphrases-manual.txt",
+        "phrases_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.mphrases-manual.txt",
+            )
         ),
-        "metadata_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_carnatic/"),
-            "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
-            "Bhuvini Dasudane/Bhuvini Dasudane.json",
+        "metadata_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_carnatic/",
+                "saraga1.5_carnatic/Cherthala Ranganatha Sharma at Arkay by Cherthala Ranganatha Sharma/",
+                "Bhuvini Dasudane/Bhuvini Dasudane.json",
+            )
         ),
     }
 
@@ -107,7 +135,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     jam = track.to_jams()
@@ -319,7 +347,7 @@ def test_to_jams():
 
 
 def test_load_tonic():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     tonic_path = track.ctonic_path
@@ -329,7 +357,7 @@ def test_load_tonic():
 
 
 def test_load_pitch():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     pitch_path = track.pitch_path
@@ -407,7 +435,7 @@ def test_load_pitch():
 
 
 def test_load_sama():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     sama_path = track.sama_path
@@ -429,7 +457,7 @@ def test_load_sama():
 
 
 def test_load_sections():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     sections_path = track.sections_path
@@ -455,7 +483,7 @@ def test_load_sections():
 
 
 def test_load_phrases():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     phrases_path = track.phrases_path
@@ -482,7 +510,7 @@ def test_load_phrases():
 
 
 def test_load_tempo():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     tempo_path = track.tempo_path
@@ -508,7 +536,7 @@ def test_load_tempo():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     metadata_path = track.metadata_path
@@ -600,7 +628,7 @@ def test_load_metadata():
 
 
 def test_load_audio():
-    data_home = "tests/resources/mir_datasets/saraga_carnatic"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_carnatic")
     dataset = saraga_carnatic.Dataset(data_home)
     track = dataset.track("116_Bhuvini_Dasudane")
     audio_path = track.audio_path

@@ -14,13 +14,17 @@ def test_track():
 
     expected_attributes = {
         "track_id": "cafcdeaf-e966-4ff0-84fb-f660d2b68365",
-        "pitch_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
+        "pitch_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/compmusic_otmm_makam/",
+                "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.pitch",
+            )
         ),
-        "mb_tags_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam/"),
-            "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+        "mb_tags_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/compmusic_otmm_makam/",
+                "MTG-otmm_makam_recognition_dataset-f14c0d0/data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.json",
+            )
         ),
         "form": "sarki",
         "instrumentation": "Solo vocal with accompaniment",
@@ -172,7 +176,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     dataset = compmusic_otmm_makam.Dataset(data_home)
@@ -425,9 +429,8 @@ def test_to_jams():
         },
     ]
     assert metadata["duration"] == 275
-    assert (
-        metadata["path"]
-        == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
+    assert metadata["path"] == os.path.normpath(
+        "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
     )
     assert metadata["works"] == [
         {
@@ -438,7 +441,7 @@ def test_to_jams():
 
 
 def test_load_pitch():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     dataset = compmusic_otmm_makam.Dataset(data_home)
@@ -497,7 +500,7 @@ def test_load_metadata():
 
 
 def test_load_mb_tags():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     dataset = compmusic_otmm_makam.Dataset(data_home)
@@ -696,9 +699,8 @@ def test_load_mb_tags():
         },
     ]
     assert mb_tags["duration"] == 275
-    assert (
-        mb_tags["path"]
-        == "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
+    assert mb_tags["path"] == os.path.normpath(
+        "../data/Kurdilihicazkar/cafcdeaf-e966-4ff0-84fb-f660d2b68365.mp3"
     )
     assert mb_tags["works"] == [
         {
@@ -709,7 +711,7 @@ def test_load_mb_tags():
 
 
 def test_special_turkish_characters():
-    data_home = "tests/resources/mir_datasets/compmusic_otmm_makam"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_otmm_makam")
     track_id = "cafcdeaf-e966-4ff0-84fb-f660d2b68365"
 
     dataset = compmusic_otmm_makam.Dataset(data_home)

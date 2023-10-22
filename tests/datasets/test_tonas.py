@@ -19,17 +19,23 @@ def test_track():
         "style": "Debla",
         "title": "Antonio Mairena",
         "tuning_frequency": 451.0654725341684,
-        "f0_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/tonas/"),
-            "Deblas/01-D_AMairena.f0.Corrected",
+        "f0_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/tonas/",
+                "Deblas/01-D_AMairena.f0.Corrected",
+            )
         ),
-        "notes_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/tonas/"),
-            "Deblas/01-D_AMairena.notes.Corrected",
+        "notes_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/tonas/",
+                "Deblas/01-D_AMairena.notes.Corrected",
+            )
         ),
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/tonas/"),
-            "Deblas/01-D_AMairena.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/tonas/",
+                "Deblas/01-D_AMairena.wav",
+            )
         ),
         "track_id": "01-D_AMairena",
     }

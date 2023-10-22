@@ -14,25 +14,34 @@ def test_track():
 
     expected_attributes = {
         "track_id": "RM-P001",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
-            "audio/rwc-p-m01/1.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_popular/", "audio/rwc-p-m01/1.wav"
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
-            "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_popular/",
+                "annotations/AIST.RWC-MDB-P-2001.CHORUS/RM-P001.CHORUS.TXT",
+            )
         ),
-        "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
-            "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
+        "beats_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_popular/",
+                "annotations/AIST.RWC-MDB-P-2001.BEAT/RM-P001.BEAT.TXT",
+            )
         ),
-        "chords_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
-            "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+        "chords_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_popular/",
+                "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+            )
         ),
-        "voca_inst_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_popular/"),
-            "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        "voca_inst_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_popular/",
+                "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+            )
         ),
         "piece_number": "No. 1",
         "suffix": "M01",
@@ -63,7 +72,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/rwc_popular"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_popular")
     dataset = rwc_popular.Dataset(data_home)
     track = dataset.track("RM-P001")
     jam = track.to_jams()
@@ -131,9 +140,11 @@ def test_to_jams():
 
 
 def test_load_chords():
-    chords_path = (
-        "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab"
+    chords_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/rwc_popular/",
+            "annotations/AIST.RWC-MDB-P-2001.CHORD/RWC_Pop_Chords/N001-M01-T01.lab",
+        )
     )
     chord_data = rwc_popular.load_chords(chords_path)
 
@@ -155,9 +166,11 @@ def test_load_chords():
 
 
 def test_load_vocal_activity():
-    vocinst_path = (
-        "tests/resources/mir_datasets/rwc_popular/"
-        + "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT"
+    vocinst_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/rwc_popular/",
+            "annotations/AIST.RWC-MDB-P-2001.VOCA_INST/RM-P001.VOCA_INST.TXT",
+        )
     )
     vocinst_data = rwc_popular.load_vocal_activity(vocinst_path)
 
@@ -206,7 +219,7 @@ def test_load_vocal_activity():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/rwc_popular"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_popular")
     dataset = rwc_popular.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["RM-P001"] == {

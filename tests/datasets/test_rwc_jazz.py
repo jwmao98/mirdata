@@ -12,17 +12,22 @@ def test_track():
 
     expected_attributes = {
         "track_id": "RM-J004",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
-            "audio/rwc-j-m01/4.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_jazz/", "audio/rwc-j-m01/4.wav"
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
-            "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_jazz/",
+                "annotations/AIST.RWC-MDB-J-2001.CHORUS/RM-J004.CHORUS.TXT",
+            )
         ),
-        "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_jazz/"),
-            "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+        "beats_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_jazz/",
+                "annotations/AIST.RWC-MDB-J-2001.BEAT/RM-J004.BEAT.TXT",
+            )
         ),
         "piece_number": "No. 4",
         "suffix": "M01",
@@ -49,7 +54,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/rwc_jazz"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
     dataset = rwc_jazz.Dataset(data_home)
     track = dataset.track("RM-J004")
     jam = track.to_jams()
@@ -112,7 +117,7 @@ def test_to_jams():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/rwc_jazz"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_jazz")
     dataset = rwc_jazz.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["RM-J004"] == {

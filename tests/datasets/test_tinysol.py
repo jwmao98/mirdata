@@ -13,9 +13,11 @@ def test_track():
 
     expected_attributes = {
         "track_id": "Fl-ord-C4-mf-N-T14d",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/tinysol/"),
-            "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/tinysol/",
+                "audio/Winds/Flute/ordinario/Fl-ord-C4-mf-N-T14d.wav",
+            )
         ),
         "dynamics": "mf",
         "fold": 0,
@@ -46,7 +48,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/tinysol"
+    data_home = os.path.normpath("tests/resources/mir_datasets/tinysol")
 
     # Case with a wind instrument (no string_id)
     dataset = tinysol.Dataset(data_home)

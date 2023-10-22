@@ -14,37 +14,53 @@ def test_track():
     expected_attributes = {
         "track_id": "50_Irani_Bhairavi_Thumri",
         "title": "Irani Bhairavi Thumri",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mp3.mp3",
+            )
         ),
-        "ctonic_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+        "ctonic_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.ctonic.txt",
+            )
         ),
-        "pitch_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+        "pitch_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.pitch.txt",
+            )
         ),
-        "tempo_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+        "tempo_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.tempo-manual.txt",
+            )
         ),
-        "sama_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+        "sama_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sama-manual.txt",
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.sections-manual-p.txt",
+            )
         ),
-        "phrases_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+        "phrases_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.mphrases-manual.txt",
+            )
         ),
-        "metadata_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/saraga_hindustani/"),
-            "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+        "metadata_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/saraga_hindustani/",
+                "saraga1.5_hindustani/New Signature by Brajeshwar Mukherjee/Irani Bhairavi Thumri/Irani Bhairavi Thumri.json",
+            )
         ),
     }
 
@@ -68,7 +84,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     jam = track.to_jams()
@@ -121,7 +137,7 @@ def test_to_jams():
 
 
 def test_load_tonic():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     tonic_path = track.ctonic_path
@@ -131,7 +147,7 @@ def test_load_tonic():
 
 
 def test_load_pitch():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     pitch_path = track.pitch_path
@@ -178,7 +194,7 @@ def test_load_pitch():
 
 
 def test_load_sama():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     sama_path = track.sama_path
@@ -204,7 +220,7 @@ def test_load_sama():
 
 
 def test_load_sections():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     sections_path = track.sections_path
@@ -239,7 +255,7 @@ def test_load_sections():
 
 
 def test_load_phrases():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     phrases_path = track.phrases_path
@@ -272,7 +288,7 @@ def test_load_phrases():
 
 
 def test_load_tempo():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     tempo_path = track.tempo_path
@@ -314,7 +330,7 @@ def test_load_tempo():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     metadata_path = track.metadata_path
@@ -413,7 +429,7 @@ def test_load_metadata():
 
 
 def test_load_audio():
-    data_home = "tests/resources/mir_datasets/saraga_hindustani"
+    data_home = os.path.normpath("tests/resources/mir_datasets/saraga_hindustani")
     dataset = saraga_hindustani.Dataset(data_home)
     track = dataset.track("50_Irani_Bhairavi_Thumri")
     audio_path = track.audio_path

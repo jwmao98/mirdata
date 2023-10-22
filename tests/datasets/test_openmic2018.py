@@ -14,13 +14,16 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
-            "audio/000/000046_3840.ogg",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/openmic2018/", "audio/000/000046_3840.ogg"
+            )
         ),
-        "vggish_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/openmic2018/"),
-            "vggish/000/000046_3840.json",
+        "vggish_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/openmic2018/",
+                "vggish/000/000046_3840.json",
+            )
         ),
         "track_id": "000046_3840",
         "title": "Yosemite",
@@ -48,7 +51,7 @@ def test_track():
 
 
 def test_classmap():
-    data_home = "tests/resources/mir_datasets/openmic2018"
+    data_home = os.path.normpath("tests/resources/mir_datasets/openmic2018")
     dataset = openmic2018.Dataset(data_home, version="test")
 
     ref_instruments = {

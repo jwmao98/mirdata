@@ -14,17 +14,23 @@ def test_track():
 
     expected_attributes = {
         "track_id": "RM-C003",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "audio/rwc-c-m01/3.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_classical/",
+                "audio/rwc-c-m01/3.wav",
+            )
         ),
-        "sections_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        "sections_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_classical/",
+                "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+            )
         ),
-        "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/rwc_classical/"),
-            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        "beats_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/rwc_classical/",
+                "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+            )
         ),
         "piece_number": "No. 3",
         "suffix": "M01",
@@ -51,7 +57,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/rwc_classical"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_classical")
     dataset = rwc_classical.Dataset(data_home)
     track = dataset.track("RM-C003")
     jam = track.to_jams()
@@ -92,9 +98,11 @@ def test_to_jams():
 
 def test_load_sections():
     # load a file which exists
-    section_path = (
-        "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT"
+    section_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/rwc_classical/",
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C003.CHORUS.TXT",
+        )
     )
     section_data = rwc_classical.load_sections(section_path)
 
@@ -109,9 +117,11 @@ def test_load_sections():
     assert np.array_equal(section_data.labels, np.array(["chorus A", "ending"]))
 
     # empty file
-    section_path = (
-        "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT"
+    section_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/rwc_classical/",
+            "annotations/AIST.RWC-MDB-C-2001.CHORUS/RM-C025_A.CHORUS.TXT",
+        )
     )
 
     section_data = rwc_classical.load_sections(section_path)
@@ -172,9 +182,11 @@ def test_position_in_bar():
 
 
 def test_load_beats():
-    beats_path = (
-        "tests/resources/mir_datasets/rwc_classical/"
-        + "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT"
+    beats_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/rwc_classical/",
+            "annotations/AIST.RWC-MDB-C-2001.BEAT/RM-C003.BEAT.TXT",
+        )
     )
     beat_data = rwc_classical.load_beats(beats_path)
 
@@ -191,7 +203,7 @@ def test_load_beats():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/rwc_classical"
+    data_home = os.path.normpath("tests/resources/mir_datasets/rwc_classical")
     dataset = rwc_classical.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["RM-C003"] == {

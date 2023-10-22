@@ -16,17 +16,21 @@ def test_track():
     expected_attributes = {
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/slakh/"),
-            "babyslakh_16k/Track00001/stems/S00.wav",
-        ),
-        "midi_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/slakh/"),
-            "babyslakh_16k/Track00001/MIDI/S00.mid",
-        ),
-        "metadata_path": (
+        "audio_path": os.path.normpath(
             os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "tests/resources/mir_datasets/slakh/",
+                "babyslakh_16k/Track00001/stems/S00.wav",
+            )
+        ),
+        "midi_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/slakh/",
+                "babyslakh_16k/Track00001/MIDI/S00.mid",
+            )
+        ),
+        "metadata_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/slakh/",
                 "babyslakh_16k/Track00001/metadata.yaml",
             )
         ),
@@ -50,15 +54,15 @@ def test_track():
 
     assert track._track_paths == {
         "audio": [
-            "babyslakh_16k/Track00001/stems/S00.wav",
+            os.path.normpath("babyslakh_16k/Track00001/stems/S00.wav"),
             "ea0e7b3d996bb3fedfbf9ee43b5c414f",
         ],
         "midi": [
-            "babyslakh_16k/Track00001/MIDI/S00.mid",
+            os.path.normpath("babyslakh_16k/Track00001/MIDI/S00.mid"),
             "68f9d227a4fd70acdcd80a5bd3b69e22",
         ],
         "metadata": [
-            "babyslakh_16k/Track00001/metadata.yaml",
+            os.path.normpath("babyslakh_16k/Track00001/metadata.yaml"),
             "ffde21b0625fd72ba04103ca55f6765d",
         ],
     }
@@ -85,19 +89,21 @@ def test_track_full():
     expected_attributes = {
         "track_id": "Track00001-S00",
         "mtrack_id": "Track00001",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/slakh/"),
-            "slakh2100_flac_redux/train/Track00001/stems/S00.flac",
-        ),
-        "midi_path": (
+        "audio_path": os.path.normpath(
             os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "tests/resources/mir_datasets/slakh/",
+                "slakh2100_flac_redux/train/Track00001/stems/S00.flac",
+            )
+        ),
+        "midi_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/slakh/",
                 "slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
             )
         ),
-        "metadata_path": (
+        "metadata_path": os.path.normpath(
             os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "tests/resources/mir_datasets/slakh/",
                 "slakh2100_flac_redux/train/Track00001/metadata.yaml",
             )
         ),
@@ -121,15 +127,15 @@ def test_track_full():
 
     assert track_full._track_paths == {
         "audio": [
-            "slakh2100_flac_redux/train/Track00001/stems/S00.flac",
+            os.path.normpath("slakh2100_flac_redux/train/Track00001/stems/S00.flac"),
             "bb4a50848831853a086e0f6e5b595804",
         ],
         "midi": [
-            "slakh2100_flac_redux/train/Track00001/MIDI/S00.mid",
+            os.path.normpath("slakh2100_flac_redux/train/Track00001/MIDI/S00.mid"),
             "68f9d227a4fd70acdcd80a5bd3b69e22",
         ],
         "metadata": [
-            "slakh2100_flac_redux/train/Track00001/metadata.yaml",
+            os.path.normpath("slakh2100_flac_redux/train/Track00001/metadata.yaml"),
             "5258ffe8376e16e5e34b71e7323c0477",
         ],
     }
@@ -158,7 +164,7 @@ def test_load_tracks():
 
 def test_to_jams():
     default_trackid = "Track00001-S00"
-    data_home = "tests/resources/mir_datasets/slakh"
+    data_home = os.path.normpath("tests/resources/mir_datasets/slakh")
     dataset = slakh.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
     jam = track.to_jams()
@@ -182,17 +188,21 @@ def test_multitrack():
 
     expected_attributes = {
         "mtrack_id": "Track00001",
-        "midi_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/slakh/"),
-            "babyslakh_16k/Track00001/all_src.mid",
-        ),
-        "mix_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/slakh/"),
-            "babyslakh_16k/Track00001/mix.wav",
-        ),
-        "metadata_path": (
+        "midi_path": os.path.normpath(
             os.path.join(
-                os.path.normpath("tests/resources/mir_datasets/slakh/"),
+                "tests/resources/mir_datasets/slakh/",
+                "babyslakh_16k/Track00001/all_src.mid",
+            )
+        ),
+        "mix_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/slakh/",
+                "babyslakh_16k/Track00001/mix.wav",
+            )
+        ),
+        "metadata_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/slakh/",
                 "babyslakh_16k/Track00001/metadata.yaml",
             )
         ),
@@ -210,7 +220,9 @@ def test_multitrack():
             "Track00001-S10",
         ],
         "lakh_midi_dir": (
-            "lmd_matched/O/O/H/TROOHTB128F931F9DF/1a81ae092884234f3264e2f45927f00a.mid"
+            os.path.normpath(
+                "lmd_matched/O/O/H/TROOHTB128F931F9DF/1a81ae092884234f3264e2f45927f00a.mid"
+            )
         ),
         "normalized": True,
         "overall_gain": 0.18270259567062658,
@@ -269,7 +281,7 @@ def test_multitrack():
 
 def test_multitrack_to_jams():
     default_mtrackid = "Track00001"
-    data_home = "tests/resources/mir_datasets/slakh"
+    data_home = os.path.normpath("tests/resources/mir_datasets/slakh")
     dataset = slakh.Dataset(data_home, version="test")
     track = dataset.multitrack(default_mtrackid)
     jam = track.to_jams()
