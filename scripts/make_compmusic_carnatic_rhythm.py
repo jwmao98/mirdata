@@ -18,7 +18,7 @@ def make_compmusic_carnatic_rhythm_index(dataset_data_path, version="full_datase
     idx = 0
     dataset_folder_name = "CMR_" + version + "_1.0"
     for rec in glob.glob(os.path.join(dataset_data_path, "audio", "*.wav")):
-        filename = rec.split("/")[-1]
+        filename = rec.split(os.sep)[-1]
         if version == "full_dataset":
             idx = filename.split("_")[0]
         else:

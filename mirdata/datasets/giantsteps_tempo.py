@@ -67,6 +67,7 @@
 """
 from typing import Optional, TextIO, Tuple
 
+import os
 from deprecated.sphinx import deprecated
 import jams
 import librosa
@@ -145,7 +146,7 @@ class Track(core.Track):
 
         self.audio_path = self.get_path("audio")
 
-        self.title = self.audio_path.replace(".mp3", "").split("/")[-1].split(".")[0]
+        self.title = self.audio_path.replace(".mp3", "").split(os.sep)[-1].split(".")[0]
 
     @core.cached_property
     def genre(self) -> Optional[str]:

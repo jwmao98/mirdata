@@ -14,7 +14,7 @@ def make_compmusic_indian_tonic(dataset_data_path):
     tonic_index = {"version": "1.0", "tracks": {}, "metadata": {}}
 
     for center_fold in glob.glob(os.path.join(dataset_data_path, "*/")):
-        center = center_fold.split("/")[-2]
+        center = center_fold.split(os.sep)[-2]
         for metafile in glob.glob(os.path.join(center_fold, "annotations", center + "*.json")):
             if "IITM1" not in metafile:
                 with open(metafile) as fhandle:
@@ -22,8 +22,8 @@ def make_compmusic_indian_tonic(dataset_data_path):
                     files = list(meta.keys())
                     wrongly_annotated = ["05-saamajavara-hindolam.mp3", "08-aajaa-sindhubhairavi.mp3", "01-varnam-nayaki.mp3"]
                     for fil in files:
-                        if any(fil.split("/")[-1].replace(".mp3", "") in s for s in wrongly_annotated if len(fil.split("/")[-1].replace(".mp3", ""))>8):
-                            idx = fil.split("/")[-1].replace(".mp3", "")
+                        if any(fil.split(os.sep)[-1].replace(".mp3", "") in s for s in wrongly_annotated if len(fil.split(os.sep)[-1].replace(".mp3", ""))>8):
+                            idx = fil.split(os.sep)[-1].replace(".mp3", "")
                             print(idx)
                             tonic_index["tracks"][idx] = {
                                 "audio": [
@@ -33,9 +33,9 @@ def make_compmusic_indian_tonic(dataset_data_path):
                             }
                         else:
                             remove_ampersans = ["11a-begada-alapana&tanam", "11b-pallavi&ragamalika", "15-EmayyaBelaga&Melukovayya-Bauli"]
-                            if any(fil.split("/")[-1].replace(".mp3", "") in s for s in remove_ampersans):
+                            if any(fil.split(os.sep)[-1].replace(".mp3", "") in s for s in remove_ampersans):
                                 fil = fil.replace("&", "_")
-                            idx = fil.split("/")[-1].replace(".mp3", "")
+                            idx = fil.split(os.sep)[-1].replace(".mp3", "")
                             tonic_index["tracks"][idx] = {
                                 "audio": [
                                     fil,

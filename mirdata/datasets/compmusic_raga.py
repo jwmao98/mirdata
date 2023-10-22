@@ -433,9 +433,9 @@ class Dataset(core.Dataset):
             with open(metadata_path, "r", errors="ignore") as fhandle:
                 meta = json.load(fhandle)
                 for song in list(meta.keys()):
-                    song_name = meta[song]["path"].split("/")[-1]
-                    concert_name = meta[song]["path"].split("/")[-3]
-                    artist_name = meta[song]["path"].split("/")[-4]
+                    song_name = meta[song]["path"].split(os.sep)[-1]
+                    concert_name = meta[song]["path"].split(os.sep)[-3]
+                    artist_name = meta[song]["path"].split(os.sep)[-4]
                     song_mbid = meta[song]["mbid"]
                     ragaid = meta[song]["ragaid"]
                     metadata[artist_name + "." + song_name] = {

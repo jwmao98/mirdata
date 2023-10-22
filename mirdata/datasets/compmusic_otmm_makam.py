@@ -210,7 +210,7 @@ class Dataset(core.Dataset):
             with open(metadata_path) as f:
                 meta = json.load(f)
                 for i in meta:
-                    index = i["mbid"].split("/")[-1]
+                    index = i["mbid"].split(os.sep)[-1]
                     metadata[index] = {
                         "makam": i["makam"],
                         "tonic": i["tonic"],

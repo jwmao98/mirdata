@@ -20,26 +20,26 @@ def test_track():
 
     expected_attributes = {
         "track_id": "multitrack_02_sax_1",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/filosax/"),
-            "Participant 1/02/Sax.wav",
-        ),
-        "annotation_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+        "audio_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/filosax/",
+            "Participant 1/02/Sax.wav"
+        )),
+        "annotation_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/filosax/",
             "Participant 1/02/annotations.json",
-        ),
-        "midi_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/filosax/"),
+        )),
+        "midi_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/filosax/",
             "Participant 1/02/Sax.mid",
-        ),
-        "musicXML_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/filosax/"),
-            "Participant 1/02/Sax.musicxml",
-        ),
-        "pdf_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/filosax/"),
-            "Participant 1/02/Sax.pdf",
-        ),
+        )),
+        "musicXML_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/filosax/",
+            "Participant 1/02/Sax.musicxml"
+        )),
+        "pdf_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/filosax/",
+            "Participant 1/02/Sax.pdf"
+        )),
     }
 
     expected_property_types = {"notes": list, "audio": tuple}
@@ -66,7 +66,7 @@ def test_track():
 
 def test_multitrack():
     default_trackid = "multitrack_01"
-    data_home = "tests/resources/mir_datasets/filosax"
+    data_home = os.path.normpath("tests/resources/mir_datasets/filosax")
     dataset = filosax.Dataset(data_home, version="test")
     default_track = dataset.multitrack(default_trackid)
 
@@ -75,7 +75,7 @@ def test_multitrack():
 
 def test_to_jams():
     default_trackid = "multitrack_01"
-    data_home = "tests/resources/mir_datasets/filosax"
+    data_home = os.path.normpath("tests/resources/mir_datasets/filosax")
     dataset = filosax.Dataset(data_home, version="test")
     default_track = dataset.multitrack(default_trackid)
     jam = default_track.to_jams()
@@ -122,7 +122,7 @@ def test_to_jams():
 
 
 def test_load_annotation():
-    annotation_path = (
+    annotation_path = os.path.normpath(
         "tests/resources/mir_datasets/filosax/Participant 1/01/annotations.json"
     )
     annotation_data = filosax.load_annotation(annotation_path)
@@ -173,7 +173,7 @@ def test_load_annotation():
 
 def test_metadata():
     default_multitrackid = "multitrack_01"
-    data_home = "tests/resources/mir_datasets/filosax"
+    data_home = os.path.normpath("tests/resources/mir_datasets/filosax")
     dataset = filosax.Dataset(data_home, version="test")
     filosax_data = dataset.load_multitracks()
     default_multitrack = filosax_data[default_multitrackid]

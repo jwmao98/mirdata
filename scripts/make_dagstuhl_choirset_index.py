@@ -19,7 +19,7 @@ def make_dataset_index(data_path):
         list(
             set(
                 [
-                    "_".join(filename.split("/")[-1].split("_")[:4])
+                    "_".join(filename.split(os.sep)[-1].split("_")[:4])
                     for filename in glob.glob(os.path.join(audio_dir, "*.wav"))
                 ]
             )

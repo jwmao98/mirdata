@@ -106,7 +106,7 @@ class Track(core.Track):
         self.metadata_path = self.get_path("meta")
         self.audio_path = self.get_path("audio")
 
-        self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
+        self.title = self.audio_path.replace(".mp3", "").split(os.sep)[-1]
 
     @core.cached_property
     def key(self):

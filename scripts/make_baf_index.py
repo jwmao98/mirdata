@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 
-BAF_INDEX_PATH = "../mirdata/datasets/indexes/baf_index_1.0.json"
+BAF_INDEX_PATH = os.path.normpath("../mirdata/datasets/indexes/baf_index_1.0.json")
 
 
 def md5(file_path: str) -> str:
@@ -39,18 +39,18 @@ def make_baf_index(data_path: str) -> None:
     for filepath in sorted(glob.glob(queries_dir)):
         file_id = Path(filepath).stem
         tracks[file_id] = {
-            "audio": (os.path.join(*filepath.split("/")[-2:]), md5(filepath))
+            "audio": (os.path.join(*filepath.split(os.sep)[-2:]), md5(filepath))
         }
 
     queries_info_path = os.path.join(data_path, "queries_info.csv")
     xannotations_path = os.path.join(data_path, "cross_annotations.csv")
     metadata = {
         "queries_info": (
-            os.path.join(*queries_info_path.split("/")[-1:]),
+            os.path.join(*queries_info_path.split(os.sep)[-1:]),
             md5(queries_info_path),
         ),
         "cross_annotations": (
-            os.path.join(*xannotations_path.split("/")[-1:]),
+            os.path.join(*xannotations_path.split(os.sep)[-1:]),
             md5(xannotations_path),
         ),
     }

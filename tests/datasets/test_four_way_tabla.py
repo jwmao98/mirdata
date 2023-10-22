@@ -13,26 +13,26 @@ def test_track():
     dataset = four_way_tabla.Dataset(data_home)
     track = dataset.track(default_trackid)
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/four_way_tabla/"),
-            "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-1.wav",
-        ),
-        "onsets_b_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/four_way_tabla/"),
-            "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-1.onsets",
-        ),
-        "onsets_d_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/four_way_tabla/"),
-            "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-1.onsets",
-        ),
-        "onsets_rb_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/four_way_tabla/"),
-            "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-1.onsets",
-        ),
-        "onsets_rt_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/four_way_tabla/"),
-            "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-1.onsets",
-        ),
+        "audio_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/four_way_tabla/",
+            "4way-tabla-ismir21-dataset/train/audios/AHK_solo-tintal-1.wav"
+        )),
+        "onsets_b_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/four_way_tabla/",
+            "4way-tabla-ismir21-dataset/train/onsets/b/AHK_solo-tintal-1.onsets"
+        )),
+        "onsets_d_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/four_way_tabla/",
+            "4way-tabla-ismir21-dataset/train/onsets/d/AHK_solo-tintal-1.onsets"
+        )),
+        "onsets_rb_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/four_way_tabla/",
+            "4way-tabla-ismir21-dataset/train/onsets/rb/AHK_solo-tintal-1.onsets"
+        )),
+        "onsets_rt_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/four_way_tabla/",
+            "4way-tabla-ismir21-dataset/train/onsets/rt/AHK_solo-tintal-1.onsets"
+        )),
         "track_id": "AHK_solo-tintal-1",
         "train": True,
     }
@@ -54,7 +54,7 @@ def test_track():
 
 def test_get_onsets():
     default_trackid = "AHK_solo-tintal-1"
-    data_home = "tests/resources/mir_datasets/four_way_tabla"
+    data_home = os.path.normpath("tests/resources/mir_datasets/four_way_tabla")
     dataset = four_way_tabla.Dataset(data_home)
     track = dataset.track(default_trackid)
 
@@ -83,7 +83,7 @@ def test_get_onsets():
 
 def test_to_jams():
     default_trackid = "AHK_solo-tintal-1"
-    data_home = "tests/resources/mir_datasets/four_way_tabla"
+    data_home = os.path.normpath("tests/resources/mir_datasets/four_way_tabla")
     dataset = four_way_tabla.Dataset(data_home)
     track = dataset.track(default_trackid)
     jam = track.to_jams()
@@ -102,7 +102,7 @@ def test_to_jams():
 
 def test_load_audio():
     default_trackid = "AHK_solo-tintal-1"
-    data_home = "tests/resources/mir_datasets/four_way_tabla"
+    data_home = os.path.normpath("tests/resources/mir_datasets/four_way_tabla")
     dataset = four_way_tabla.Dataset(data_home)
     track = dataset.track(default_trackid)
     audio_path = track.audio_path

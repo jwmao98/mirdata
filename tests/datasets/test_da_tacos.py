@@ -14,34 +14,34 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "cens_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5",
-        ),
-        "crema_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5",
-        ),
-        "hpcp_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5",
-        ),
-        "key_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5",
-        ),
-        "madmom_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5",
-        ),
-        "mfcc_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5",
-        ),
-        "tags_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/da_tacos/"),
-            "da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5",
-        ),
+        "cens_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
+        )),
+        "crema_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
+        )),
+        "hpcp_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_hpcp/W_163992_hpcp/P_547131_hpcp.h5"
+        )),
+        "key_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_key/W_163992_key/P_547131_key.h5"
+        )),
+        "madmom_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_madmom/W_163992_madmom/P_547131_madmom.h5"
+        )),
+        "mfcc_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_mfcc/W_163992_mfcc/P_547131_mfcc.h5"
+        )),
+        "tags_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/da_tacos/",
+            "da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
+        )),
         "track_id": "coveranalysis#W_163992#P_547131",
         "performance_id": "P_547131",
         "subset": "coveranalysis",
@@ -74,7 +74,7 @@ def test_track():
 
 def test_to_jams():
     default_trackid = "coveranalysis#W_163992#P_547131"
-    data_home = "tests/resources/mir_datasets/da_tacos"
+    data_home = os.path.normpath("tests/resources/mir_datasets/da_tacos")
     dataset = da_tacos.Dataset(data_home, version="test")
     track = dataset.track(default_trackid)
 
@@ -94,7 +94,7 @@ def test_to_jams():
 
 
 def test_load_tags():
-    tags_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5"
+    tags_path = os.path.normpath("tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_tags/W_163992_tags/P_547131_tags.h5")
     tags_data = da_tacos.load_tags(tags_path)
 
     assert isinstance(tags_data, list)
@@ -103,7 +103,7 @@ def test_load_tags():
 
 
 def test_load_cens():
-    cens_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5"
+    cens_path = os.path.normpath("tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_cens/W_163992_cens/P_547131_cens.h5")
     cens_data = da_tacos.load_cens(cens_path)
 
     assert isinstance(cens_data, np.ndarray)
@@ -113,7 +113,7 @@ def test_load_cens():
 
 
 def test_load_crema():
-    crema_path = "tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5"
+    crema_path = os.path.normpath("tests/resources/mir_datasets/da_tacos/da-tacos_coveranalysis_subset_crema/W_163992_crema/P_547131_crema.h5")
     crema_data = da_tacos.load_crema(crema_path)
 
     assert isinstance(crema_data, np.ndarray)
@@ -123,7 +123,7 @@ def test_load_crema():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/da_tacos"
+    data_home = os.path.normpath("tests/resources/mir_datasets/da_tacos")
     dataset = da_tacos.Dataset(data_home)
     metadata = dataset._metadata
     default_trackid = "coveranalysis#W_163992#P_547131"
@@ -152,7 +152,7 @@ def test_load_metadata_not_there():
 
 
 def test_filters():
-    data_home = "tests/resources/mir_datasets/da_tacos"
+    data_home = os.path.normpath("tests/resources/mir_datasets/da_tacos")
     dataset = da_tacos.Dataset(data_home)
 
     data = dataset.filter_index("asdfasdfasdf")

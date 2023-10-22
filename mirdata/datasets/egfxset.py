@@ -345,14 +345,14 @@ class Dataset(core.Dataset):
                 trackiden = trackiden.replace(" ", "")
                 trackiden = trackiden.replace("_", "")
 
-            noteCord = track.split("/")[1].split("-")
+            noteCord = track.split(os.sep)[1].split("-")
             if len(noteCord) != 2:
-                noteCord = track.split("/")[1].split(".")
+                noteCord = track.split(os.sep)[1].split(".")
 
             if track[:2].lower() == "cl":
                 metadata_index[track] = {
                     "String-fret Tuple": [
-                        int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                        int(s) for s in re.findall(r"\b\d+\b", track.split(os.sep)[1])
                     ],
                     "Note Name": annotations.convert_pitch_units(
                         pitches=np.array(
@@ -371,7 +371,7 @@ class Dataset(core.Dataset):
                         ),
                         pitch_unit="midi",
                     ),
-                    "Pickup Configuration": track.split("_")[1].split("/")[0],
+                    "Pickup Configuration": track.split("_")[1].split(os.sep)[0],
                     "Effect": "clean",
                     "Model": "None",
                     "Effect Type": "None",
@@ -383,7 +383,7 @@ class Dataset(core.Dataset):
             if trackiden in indexname:
                 metadata_index[track] = {
                     "String-fret Tuple": [
-                        int(s) for s in re.findall(r"\b\d+\b", track.split("/")[1])
+                        int(s) for s in re.findall(r"\b\d+\b", track.split(os.sep)[1])
                     ],
                     "Note Name": annotations.convert_pitch_units(
                         pitches=np.array(
@@ -402,7 +402,7 @@ class Dataset(core.Dataset):
                         ),
                         pitch_unit="midi",
                     ),
-                    "Pickup Configuration": track.split("_")[1].split("/")[0],
+                    "Pickup Configuration": track.split("_")[1].split(os.sep)[0],
                     "Effect": reader[indexname.index(trackiden)]["Effect "],
                     "Model": reader[indexname.index(trackiden)]["Model"],
                     "Effect Type": reader[indexname.index(trackiden)]["Effect Type"],

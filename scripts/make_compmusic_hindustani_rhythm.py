@@ -18,7 +18,7 @@ def make_compmusic_hindustani_rhythm_index(dataset_data_path):
     idx = 0
     dataset_folder_name = "HMR_1.0"
     for rec in glob.glob(os.path.join(dataset_data_path, "audio", "*.wav")):
-        filename = rec.split("/")[-1]
+        filename = rec.split(os.sep)[-1]
         idx = filename.split("_")[1]
         cmr_index["tracks"][idx] = {
             "audio": (

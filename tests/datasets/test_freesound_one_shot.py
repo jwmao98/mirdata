@@ -15,18 +15,14 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath(
-                "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
-            ),
-            "one_shot_percussive_sounds/1/183.wav",
-        ),
-        "file_metadata_path": os.path.join(
-            os.path.normpath(
-                "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/"
-            ),
-            "analysis/1/183_analysis.json",
-        ),
+        "audio_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/",
+            "one_shot_percussive_sounds/1/183.wav"
+        )),
+        "file_metadata_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/freesound_one_shot_percussive_sounds/",
+            "analysis/1/183_analysis.json"
+        )),
         "track_id": "183",
     }
 

@@ -18,7 +18,7 @@ def make_four_way_tabla_index(dataset_data_path):
     # Building the index while parsing the audio path
     for subset in subsets:
         for sample in glob.glob(os.path.join(dataset_data_path, subset, "audios", "*.wav")):
-            index = sample.split("/")[-1].replace(".wav", "")
+            index = sample.split(os.sep)[-1].replace(".wav", "")
             tabla_index["tracks"][index] = {
                 "audio": (None, None),
                 "onsets_b": (None, None),

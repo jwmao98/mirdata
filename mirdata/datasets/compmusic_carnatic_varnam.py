@@ -459,10 +459,10 @@ class Dataset(core.Dataset):
             "taalas",
         )
         out_tonic = {}
-        for taala_path in glob.glob(os.path.join(taalas_path, "*/")):
-            taala = taala_path.split("/")[-2]
+        for taala_path in glob.glob(os.path.normpath(os.path.join(taalas_path, "*/"))):
+            taala = taala_path.split(os.sep)[-2]
             for track in glob.glob(os.path.join(taala_path, "*.svl")):
-                artist = track.split("/")[-1].replace(".svl", "")
+                artist = track.split(os.sep)[-1].replace(".svl", "")
                 idx = artist + "_" + taala
                 out_tonic[idx] = tonics_dict[artist]
         return out_tonic

@@ -33,6 +33,7 @@
 """
 
 import json
+import os
 from typing import Dict, List, Optional, TextIO, Tuple
 
 from deprecated.sphinx import deprecated
@@ -109,7 +110,7 @@ class Track(core.Track):
 
         self.audio_path = self.get_path("audio")
 
-        self.title = self.audio_path.replace(".mp3", "").split("/")[-1]
+        self.title = self.audio_path.replace(".mp3", "").split(os.sep)[-1]
 
     @core.cached_property
     def key(self) -> Optional[str]:

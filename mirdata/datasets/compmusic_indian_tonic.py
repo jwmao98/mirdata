@@ -240,7 +240,7 @@ class Dataset(core.Dataset):
                     data = json.load(fhandle)
                     if "IITM" not in meta:
                         for k in list(data.keys()):
-                            idx = k.split("/")[-1].replace(".mp3", "")
+                            idx = k.split(os.sep)[-1].replace(".mp3", "")
                             metadata[idx] = {
                                 "tonic": float(data[k]["tonic"]),
                                 "artist": data[k]["artist"],
@@ -251,7 +251,7 @@ class Dataset(core.Dataset):
                             }
                     else:
                         for k in list(data.keys()):
-                            idx = k.split("/")[-1].replace(".mp3", "")
+                            idx = k.split(os.sep)[-1].replace(".mp3", "")
                             metadata[idx] = {
                                 "tonic": float(data[k]["tonic"]),
                                 "artist": data[k]["artist"],

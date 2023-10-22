@@ -18,18 +18,18 @@ def make_compmusic_raga_index(dataset_data_path):
     for trad in traditions:
         tradition_name = trad
         for raga in glob.glob(os.path.join(dataset_data_path, trad, "audio", "*/")):
-            raga_id = raga.split("/")[-2]
+            raga_id = raga.split(os.sep)[-2]
             if "." not in raga:
                 for artist in glob.glob(os.path.join(raga, "*/")):
                     if "." not in artist:
-                        artist_name = artist.split("/")[-2]
+                        artist_name = artist.split(os.sep)[-2]
                         for concert in glob.glob(os.path.join(artist, "*/")):
                             if trad == "Hindustani":
                                 print(concert)
                             if "." not in concert:
-                                concert_name = concert.split("/")[-2]
+                                concert_name = concert.split(os.sep)[-2]
                                 for audio_basefile in glob.glob(os.path.join(concert, "*/")):
-                                    song_name = audio_basefile.split("/")[-2]
+                                    song_name = audio_basefile.split(os.sep)[-2]
                                     id = artist_name + "." + song_name
                                     audio_file = os.path.join(audio_basefile, song_name + ".mp3")
                                     feat_basefile = audio_basefile.replace("audio", "features")

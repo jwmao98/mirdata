@@ -15,18 +15,18 @@ def test_track():
 
     expected_attributes = {
         "track_id": "10003",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
-            "CMR_subset_1.0/audio/01_10003_1-04_Shri_Visvanatham.wav",
-        ),
-        "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
-            "CMR_subset_1.0/annotations/beats/01_10003_1-04_Shri_Visvanatham.beats",
-        ),
-        "meter_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm/"),
-            "CMR_subset_1.0/annotations/meter/01_10003_1-04_Shri_Visvanatham.meter",
-        ),
+        "audio_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/compmusic_carnatic_rhythm/",
+            "CMR_subset_1.0/audio/01_10003_1-04_Shri_Visvanatham.wav"
+        )),
+        "beats_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/compmusic_carnatic_rhythm/",
+            "CMR_subset_1.0/annotations/beats/01_10003_1-04_Shri_Visvanatham.beats"
+        )),
+        "meter_path": os.path.normpath(os.path.join(
+            "tests/resources/mir_datasets/compmusic_carnatic_rhythm/",
+            "CMR_subset_1.0/annotations/meter/01_10003_1-04_Shri_Visvanatham.meter"
+        )),
     }
 
     expected_property_types = {
@@ -52,7 +52,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track("10003")
     jam = track.to_jams()
@@ -81,7 +81,7 @@ def test_to_jams():
 
 
 def test_load_meter():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track("10003")
     meter_path = track.meter_path
@@ -91,7 +91,7 @@ def test_load_meter():
 
 
 def test_load_beats():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track("10003")
     beats_path = track.beats_path
@@ -107,7 +107,7 @@ def test_load_beats():
     assert np.array_equal(parsed_beats.positions, np.array([1, 2, 3]))
     assert compmusic_carnatic_rhythm.load_beats(None) is None
 
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="full_dataset")
     track = dataset.track("10001")
     beats_path = track.beats_path
@@ -116,7 +116,7 @@ def test_load_beats():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     meta = dataset._metadata  # get dataset metadata
     parsed_metadata = meta["10003"]  # get track metadata
@@ -129,7 +129,7 @@ def test_load_metadata():
     assert parsed_metadata["num_of_beats"] == 162
     assert parsed_metadata["num_of_samas"] == 21
 
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="full_dataset")
     meta = dataset._metadata  # get dataset metadata
     parsed_metadata = meta["10001"]  # get track metadata
@@ -145,7 +145,7 @@ def test_load_metadata():
 
 
 def test_load_audio():
-    data_home = "tests/resources/mir_datasets/compmusic_carnatic_rhythm"
+    data_home = os.path.normpath("tests/resources/mir_datasets/compmusic_carnatic_rhythm")
     dataset = compmusic_carnatic_rhythm.Dataset(data_home, version="test")
     track = dataset.track("10003")
     audio_path = track.audio_path
