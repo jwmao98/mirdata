@@ -58,7 +58,7 @@ def test_track():
     assert sr == 48000
     assert audio.shape == (48000,)
 
-    default_trackid = "Clean_Middle/6-22"
+    default_trackid = os.path.normpath("Clean_Middle/6-22")
     track = dataset.track(default_trackid)
 
     expected_attributes = {

@@ -595,7 +595,9 @@ class Track(object):
         if self._track_paths[key][0] is None:
             return None
         else:
-            return os.path.join(self._data_home, self._track_paths[key][0])
+            return os.path.normpath(
+                os.path.join(self._data_home, self._track_paths[key][0])
+            )
 
 
 class MultiTrack(Track):
