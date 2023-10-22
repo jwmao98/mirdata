@@ -20,9 +20,11 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/baf/queries"),
-            TRACK_ID + ".wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/baf/queries",
+                TRACK_ID + ".wav",
+            )
         ),
         "track_id": TRACK_ID,
     }
