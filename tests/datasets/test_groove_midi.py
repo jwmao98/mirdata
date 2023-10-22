@@ -9,7 +9,7 @@ from tests.test_utils import run_track_tests
 
 def test_track():
     default_trackid = "drummer1/eval_session/1"
-    data_home = "tests/resources/mir_datasets/groove_midi"
+    data_home = os.path.normpath("tests/resources/mir_datasets/groove_midi")
     dataset = groove_midi.Dataset(data_home)
     track = dataset.track(default_trackid)
 
@@ -23,11 +23,15 @@ def test_track():
         "time_signature": "4-4",
         "midi_filename": "drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid",
         "audio_filename": "drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav",
-        "midi_path": os.path.join(
-            data_home, "drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid"
+        "midi_path": os.path.normpath(
+            os.path.join(
+                data_home, "drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid"
+            )
         ),
-        "audio_path": os.path.join(
-            data_home, "drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav"
+        "audio_path": os.path.normpath(
+            os.path.join(
+                data_home, "drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav"
+            )
         ),
         "duration": 27.872308,
         "split": "test",
@@ -42,11 +46,11 @@ def test_track():
 
     assert track._track_paths == {
         "audio": [
-            "drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav",
+            os.path.normpath("drummer1/eval_session/1_funk-groove1_138_beat_4-4.wav"),
             "7f94a191506f70ac9d313b7978203c3c",
         ],
         "midi": [
-            "drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid",
+            os.path.normpath("drummer1/eval_session/1_funk-groove1_138_beat_4-4.mid"),
             "b01a609cee84cfbc2c154bb9b6566955",
         ],
     }
@@ -67,7 +71,7 @@ def test_track():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/groove_midi"
+    data_home = os.path.normpath("tests/resources/mir_datasets/groove_midi")
     dataset = groove_midi.Dataset(data_home)
     metadata = dataset._metadata
 
@@ -93,12 +97,14 @@ def test_load_audio():
 
 
 def test_download(httpserver):
-    data_home = "tests/resources/mir_datasets/groove_midi_download"
+    data_home = os.path.normpath("tests/resources/mir_datasets/groove_midi_download")
     if os.path.exists(data_home):
         shutil.rmtree(data_home)
 
     httpserver.serve_content(
-        open("tests/resources/download/groove-v1-0.0.zip", "rb").read()
+        open(
+            os.path.normpath("tests/resources/download/groove-v1-0.0.zip"), "rb"
+        ).read()
     )
 
     remotes = {

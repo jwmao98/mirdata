@@ -15,24 +15,30 @@ def test_track():
 
     expected_attributes = {
         "track_id": "10161_chorus",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/ikala/"),
-            "Wavfile/10161_chorus.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/ikala/",
+                "Wavfile/10161_chorus.wav",
+            )
         ),
         "song_id": "10161",
         "section": "chorus",
         "singer_id": "1",
-        "f0_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/ikala/"),
-            "PitchLabel/10161_chorus.pv",
+        "f0_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/ikala/", "PitchLabel/10161_chorus.pv"
+            )
         ),
-        "lyrics_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/ikala/"),
-            "Lyrics/10161_chorus.lab",
+        "lyrics_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/ikala/", "Lyrics/10161_chorus.lab"
+            )
         ),
-        "notes_pyin_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/ikala/"),
-            "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+        "notes_pyin_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/ikala/",
+                "ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv",
+            )
         ),
     }
 
@@ -78,7 +84,7 @@ def test_track():
 
 
 def test_to_jams():
-    data_home = "tests/resources/mir_datasets/ikala"
+    data_home = os.path.normpath("tests/resources/mir_datasets/ikala")
     default_trackid = "10161_chorus"
     dataset = ikala.Dataset(data_home)
     track = dataset.track(default_trackid)
@@ -119,7 +125,9 @@ def test_to_jams():
 
 def test_load_f0():
     # load a file which exists
-    f0_path = "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv"
+    f0_path = os.path.normpath(
+        "tests/resources/mir_datasets/ikala/PitchLabel/10161_chorus.pv"
+    )
     f0_data = ikala.load_f0(f0_path)
 
     # check types
@@ -138,7 +146,9 @@ def test_load_f0():
 
 
 def test_load_notes():
-    notes_path = "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv"
+    notes_path = os.path.normpath(
+        "tests/resources/mir_datasets/ikala/ikala-pyin-notes/10161_chorus_vamp_pyin_pyin_notes.csv"
+    )
     note_data = ikala.load_notes(notes_path)
 
     # check types
@@ -155,7 +165,9 @@ def test_load_notes():
 
 def test_load_lyrics():
     # load a file without pronunciations
-    lyrics_path_simple = "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab"
+    lyrics_path_simple = os.path.normpath(
+        "tests/resources/mir_datasets/ikala/Lyrics/10161_chorus.lab"
+    )
     lyrics_data_simple = ikala.load_lyrics(lyrics_path_simple)
     pronunciation_data_simple = ikala.load_pronunciations(lyrics_path_simple)
 
@@ -177,7 +189,9 @@ def test_load_lyrics():
     assert np.array_equal(pronunciation_data_simple.lyrics, ["", ""])
 
     # load a file with pronunciations
-    lyrics_path_pronun = "tests/resources/mir_datasets/ikala/Lyrics/10164_chorus.lab"
+    lyrics_path_pronun = os.path.normpath(
+        "tests/resources/mir_datasets/ikala/Lyrics/10164_chorus.lab"
+    )
     lyrics_data_pronun = ikala.load_lyrics(lyrics_path_pronun)
     pronun_data = ikala.load_pronunciations(lyrics_path_pronun)
 
@@ -196,7 +210,7 @@ def test_load_lyrics():
 
 
 def test_load_metadata():
-    data_home = "tests/resources/mir_datasets/ikala"
+    data_home = os.path.normpath("tests/resources/mir_datasets/ikala")
     dataset = ikala.Dataset(data_home)
     metadata = dataset._metadata
     assert metadata["10161"] == "1"

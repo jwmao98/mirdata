@@ -15,50 +15,72 @@ def test_track():
 
     expected_attributes = {
         "track_id": "DCS_LI_QuartetB_Take04_B2",
-        "audio_dyn_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_DYN.wav"
-        )),
-        "audio_hsm_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_HSM.wav"
-        )),
-        "audio_lrx_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_LRX.wav"
-        )),
-        "f0_crepe_dyn_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv"
-        )),
-        "f0_crepe_hsm_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_HSM.csv"
-        )),
-        "f0_crepe_lrx_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_LRX.csv"
-        )),
-        "f0_pyin_dyn_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_DYN.csv"
-        )),
-        "f0_pyin_hsm_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_HSM.csv"
-        )),
-        "f0_pyin_lrx_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_LRX.csv"
-        )),
-        "f0_manual_lrx_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv"
-        )),
-        "score_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv",
-        )),
+        "audio_dyn_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_DYN.wav",
+            )
+        ),
+        "audio_hsm_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_HSM.wav",
+            )
+        ),
+        "audio_lrx_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_B2_LRX.wav",
+            )
+        ),
+        "f0_crepe_dyn_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv",
+            )
+        ),
+        "f0_crepe_hsm_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_HSM.csv",
+            )
+        ),
+        "f0_crepe_lrx_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+            )
+        ),
+        "f0_pyin_dyn_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_DYN.csv",
+            )
+        ),
+        "f0_pyin_hsm_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_HSM.csv",
+            )
+        ),
+        "f0_pyin_lrx_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_PYIN/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+            )
+        ),
+        "f0_manual_lrx_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv",
+            )
+        ),
+        "score_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv",
+            )
+        ),
     }
 
     expected_property_types = {
@@ -112,7 +134,9 @@ def test_mtrack_no_notes():
 
 
 def test_load_f0():
-    f0_path = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv")
+    f0_path = os.path.normpath(
+        "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_CREPE/DCS_LI_QuartetB_Take04_B2_DYN.csv"
+    )
     f0 = dagstuhl_choirset.load_f0(f0_path)
     assert isinstance(f0, annotations.F0Data)
 
@@ -142,7 +166,9 @@ def test_load_f0():
         ),
     )
 
-    f0_path = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv")
+    f0_path = os.path.normpath(
+        "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_F0_manual/DCS_LI_QuartetB_Take04_B2_LRX.csv"
+    )
     f0 = dagstuhl_choirset.load_f0(f0_path)
     assert isinstance(f0, annotations.F0Data)
 
@@ -157,7 +183,9 @@ def test_load_f0():
 
 
 def test_load_score():
-    score_path = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv")
+    score_path = os.path.normpath(
+        "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_scorerepresentation/DCS_LI_QuartetB_Take04_Stereo_STM_B.csv"
+    )
     score = dagstuhl_choirset.load_score(score_path)
     assert isinstance(score, annotations.NoteData)
 
@@ -184,7 +212,9 @@ def test_load_score():
 
 
 def test_load_beat():
-    beat_path = os.path.normpath("tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv")
+    beat_path = os.path.normpath(
+        "tests/resources/mir_datasets/dagstuhl_choirset/annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
+    )
     beat = dagstuhl_choirset.load_beat(beat_path)
     assert isinstance(beat, annotations.BeatData)
 
@@ -250,28 +280,38 @@ def test_multitrack():
 
     expected_attributes = {
         "mtrack_id": "DCS_LI_QuartetB_Take04",
-        "audio_stm_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STM.wav"
-        )),
-        "audio_str_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STR.wav"
-        )),
-        "audio_stl_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STL.wav",
-        )),
-        "audio_rev_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav"
-        )),
+        "audio_stm_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STM.wav",
+            )
+        ),
+        "audio_str_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STR.wav",
+            )
+        ),
+        "audio_stl_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_Stereo_STL.wav",
+            )
+        ),
+        "audio_rev_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "audio_wav_22050_mono/DCS_LI_QuartetB_Take04_StereoReverb_STM.wav",
+            )
+        ),
         "audio_spl_path": None,
         "audio_spr_path": None,
-        "beat_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dagstuhl_choirset/",
-            "annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv"
-        )),
+        "beat_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dagstuhl_choirset/",
+                "annotations_csv_beat/DCS_LI_QuartetB_Take04_Stereo_STM.csv",
+            )
+        ),
         "track_ids": [
             "DCS_LI_QuartetB_Take04_A2",
             "DCS_LI_QuartetB_Take04_B2",

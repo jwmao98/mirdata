@@ -13,17 +13,23 @@ def test_track():
     track = dataset.track(default_trackid)
     expected_attributes = {
         "genre": "country",
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
-            "gtzan_genre/genres/country/country.00000.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/gtzan_genre/",
+                "gtzan_genre/genres/country/country.00000.wav",
+            )
         ),
-        "beats_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
-            "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+        "beats_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/gtzan_genre/",
+                "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+            )
         ),
-        "tempo_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/gtzan_genre/"),
-            "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        "tempo_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/gtzan_genre/",
+                "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+            )
         ),
         "track_id": "country.00000",
     }
@@ -40,9 +46,11 @@ def test_track():
 
 
 def test_load_beats():
-    beats_path = (
-        "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats"
+    beats_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/gtzan_genre/",
+            "gtzan_tempo_beat-main/beats/gtzan_country_00000.beats",
+        )
     )
     beat_data = gtzan_genre.load_beats(beats_path)
 
@@ -64,9 +72,11 @@ def test_load_beats():
     assert gtzan_genre.load_beats(None) is None, "load_beats(None) should return None"
 
     # check empty positions
-    beats_path = (
-        "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_tempo_beat-main/beats/gtzan_country_00000_noposition.beats"
+    beats_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/gtzan_genre/",
+            "gtzan_tempo_beat-main/beats/gtzan_country_00000_noposition.beats",
+        )
     )
     beat_data = gtzan_genre.load_beats(beats_path)
 
@@ -79,9 +89,11 @@ def test_load_beats():
 
 
 def test_load_tempo():
-    tempo_path = (
-        "tests/resources/mir_datasets/gtzan_genre/"
-        + "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm"
+    tempo_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/gtzan_genre/",
+            "gtzan_tempo_beat-main/tempo/gtzan_country_00000.bpm",
+        )
     )
     tempo_data = gtzan_genre.load_tempo(tempo_path)
 

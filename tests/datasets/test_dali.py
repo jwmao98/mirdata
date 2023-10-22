@@ -24,15 +24,19 @@ def test_track():
 
     expected_attributes = {
         "album": "Mezmerize",
-        "annotation_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dali/",
-            "annotations/4b196e6c99574dd49ad00d56e132712b.gz"
-        )),
+        "annotation_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dali/",
+                "annotations/4b196e6c99574dd49ad00d56e132712b.gz",
+            )
+        ),
         "artist": "System Of A Down",
-        "audio_path": os.path.normpath(os.path.join(
-            "tests/resources/mir_datasets/dali/",
-            "audio/4b196e6c99574dd49ad00d56e132712b.mp3"
-        )),
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/dali/",
+                "audio/4b196e6c99574dd49ad00d56e132712b.mp3",
+            )
+        ),
         "audio_url": "zUzd9KyIDrM",
         "dataset_version": 1,
         "genres": ["Pop", "Rock", "Hard Rock", "Metal"],
@@ -57,7 +61,9 @@ def test_track():
 
     run_track_tests(track, expected_attributes, expected_property_types)
 
-    path_save = os.path.normpath("/home/mfuentes/astre/code/repositories/mirdata/tests/resources/mir_datasets/dali/annotations")
+    path_save = os.path.normpath(
+        "/home/mfuentes/astre/code/repositories/mirdata/tests/resources/mir_datasets/dali/annotations"
+    )
     name = "test"
     track.annotation_object.write_json(path_save, name)
 
@@ -67,10 +73,12 @@ def test_track():
 
 
 def test_load_notes():
-    notes_path = os.path.normpath(os.path.join(
-        "tests/resources/mir_datasets/dali/annotations/",
-        "4b196e6c99574dd49ad00d56e132712b.gz"
-    ))
+    notes_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/dali/annotations/",
+            "4b196e6c99574dd49ad00d56e132712b.gz",
+        )
+    )
     note_data = dali.load_annotations_granularity(notes_path, "notes")
 
     assert type(note_data) == annotations.NoteData
@@ -83,10 +91,12 @@ def test_load_notes():
 
 
 def test_load_words():
-    data_path = os.path.normpath(os.path.join(
-        "tests/resources/mir_datasets/dali/annotations/",
-        "4b196e6c99574dd49ad00d56e132712b.gz"
-    ))
+    data_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/dali/annotations/",
+            "4b196e6c99574dd49ad00d56e132712b.gz",
+        )
+    )
     word_data = dali.load_annotations_granularity(data_path, "words")
 
     assert type(word_data) == annotations.LyricData
@@ -99,10 +109,12 @@ def test_load_words():
 
 
 def test_load_lines():
-    data_path = os.path.normpath(os.path.join(
-        "tests/resources/mir_datasets/dali/annotations/",
-        "4b196e6c99574dd49ad00d56e132712b.gz"
-    ))
+    data_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/dali/annotations/",
+            "4b196e6c99574dd49ad00d56e132712b.gz",
+        )
+    )
     line_data = dali.load_annotations_granularity(data_path, "lines")
 
     assert type(line_data) == annotations.LyricData
@@ -115,10 +127,12 @@ def test_load_lines():
 
 
 def test_load_paragraphs():
-    data_path = os.path.normpath(os.path.join(
-        "tests/resources/mir_datasets/dali/annotations/",
-        "4b196e6c99574dd49ad00d56e132712b.gz"
-    ))
+    data_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/dali/annotations/",
+            "4b196e6c99574dd49ad00d56e132712b.gz",
+        )
+    )
     par_data = dali.load_annotations_granularity(data_path, "paragraphs")
 
     assert type(par_data) == annotations.LyricData
@@ -132,10 +146,12 @@ def test_load_paragraphs():
 
 
 def test_load_dali_object():
-    data_path = os.path.normpath(os.path.join(
-        "tests/resources/mir_datasets/dali/annotations/",
-        "4b196e6c99574dd49ad00d56e132712b.gz"
-    ))
+    data_path = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/dali/annotations/",
+            "4b196e6c99574dd49ad00d56e132712b.gz",
+        )
+    )
     dali_data = dali.load_annotations_class(data_path)
 
     assert type(dali_data) == DALI.Annotations

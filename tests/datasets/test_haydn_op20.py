@@ -24,9 +24,11 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "humdrum_annotated_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/haydn_op20/"),
-            "op20n1-01.hrm",
+        "humdrum_annotated_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/haydn_op20/",
+                "op20n1-01.hrm",
+            )
         ),
         "title": "op20n1-01",
         "track_id": "0",
@@ -52,11 +54,11 @@ def test_to_jam():
     jam = track.to_jams()
     assert jam["file_metadata"]["title"] == "op20n1-01", "title does not match expected"
     assert jam["file_metadata"]["duration"] == 644, "duration does not match expected"
-    assert jam["sandbox"]["humdrum_annotated_path"] == os.path.join(
-        os.path.normpath("tests/resources/mir_datasets/haydn_op20/"), "op20n1-01.hrm"
+    assert jam["sandbox"]["humdrum_annotated_path"] == os.path.normpath(
+        os.path.join("tests/resources/mir_datasets/haydn_op20/", "op20n1-01.hrm")
     ), "duration does not match expected"
-    assert jam["sandbox"]["midi_path"] == os.path.join(
-        os.path.normpath("tests/resources/mir_datasets/haydn_op20/"), "op20n1-01.midi"
+    assert jam["sandbox"]["midi_path"] == os.path.normpath(
+        os.path.join("tests/resources/mir_datasets/haydn_op20/", "op20n1-01.midi")
     ), "duration does not match expected"
     assert isinstance(jam["sandbox"]["chords_music21"], list)
     assert jam["sandbox"]["chords_music21"][0]["time"] == 0
@@ -103,14 +105,14 @@ def test_to_jam():
 
 
 def test_load_score():
-    path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    path = os.path.normpath("tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm")
     score = haydn_op20.load_score(path)
     assert isinstance(score, music21.stream.Score)
     assert len(score.parts) == 4
 
 
 def test_load_key():
-    path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    path = os.path.normpath("tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm")
 
     key_data = haydn_op20.load_key(path)
     assert type(key_data) == KeyData
@@ -131,7 +133,7 @@ def test_load_key():
 
 
 def test_load_chords():
-    path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    path = os.path.normpath("tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm")
 
     chord_data = haydn_op20.load_chords(path)
 
@@ -167,7 +169,7 @@ def test_load_chords():
 
 
 def test_load_roman_numerals():
-    path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    path = os.path.normpath("tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm")
     roman_numerals = haydn_op20.load_roman_numerals(path)
     assert isinstance(roman_numerals, list)
     assert len(roman_numerals) == 4
@@ -178,7 +180,9 @@ def test_load_roman_numerals():
 
 
 def test_load_midi_path():
-    path = "tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm"
+    path = os.path.normpath("tests/resources/mir_datasets/haydn_op20/op20n1-01.hrm")
     midi_path = haydn_op20.convert_and_save_to_midi(path)
     assert isinstance(midi_path, str)
-    assert midi_path == "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
+    assert midi_path == os.path.normpath(
+        "tests/resources/mir_datasets/haydn_op20/op20n1-01.midi"
+    )

@@ -12,13 +12,17 @@ def test_track():
     track = dataset.track(default_trackid)
     track_train = dataset.track(default_trackid_train)
     expected_attributes = {
-        "annotation_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/irmas/"),
-            "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.txt",
+        "annotation_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/irmas/",
+                "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.txt",
+            )
         ),
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/irmas/"),
-            "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/irmas/",
+                "IRMAS-TestingData-Part1/Part1/02 - And The Body Will Die-8.wav",
+            )
         ),
         "track_id": "1",
         "predominant_instrument": None,
@@ -28,13 +32,17 @@ def test_track():
         "train": False,
     }
     expected_attributes_train = {
-        "annotation_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/irmas/"),
-            "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+        "annotation_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/irmas/",
+                "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+            )
         ),
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/irmas/"),
-            "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/irmas/",
+                "IRMAS-TrainingData/cla/[cla][cla]0189__2.wav",
+            )
         ),
         "track_id": "0189__2",
         "predominant_instrument": "cla",
@@ -60,7 +68,7 @@ def test_track():
 def test_to_jams():
     # Training samples
     default_trackid_train = "0189__2"
-    data_home = "tests/resources/mir_datasets/irmas"
+    data_home = os.path.normpath("tests/resources/mir_datasets/irmas")
     dataset = irmas.Dataset(data_home)
     track_train = dataset.track(default_trackid_train)
     jam_train = track_train.to_jams()
@@ -75,7 +83,7 @@ def test_to_jams():
 
     # Testing samples
     default_trackid_test = "1"
-    data_home = "tests/resources/mir_datasets/irmas"
+    data_home = os.path.normpath("tests/resources/mir_datasets/irmas")
     dataset = irmas.Dataset(data_home)
     track_test = dataset.track(default_trackid_test)
     jam_test = track_test.to_jams()
@@ -90,18 +98,22 @@ def test_to_jams():
 
 def test_load_pred_inst():
     # Training samples
-    pred_inst_audio_train = (
-        "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/"
-        + "[cla][cla]0189__2.wav"
+    pred_inst_audio_train = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/irmas/IRMAS-TrainingData/cla/",
+            "[cla][cla]0189__2.wav",
+        )
     )
 
     pred_inst_train = os.path.basename(os.path.dirname(pred_inst_audio_train))
     assert pred_inst_train == "cla"
 
     # Testing samples
-    pred_inst_ann_path_test = (
-        "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/"
-        + "02 - And The Body Will Die-8.txt"
+    pred_inst_ann_path_test = os.path.normpath(
+        os.path.join(
+            "tests/resources/mir_datasets/irmas/IRMAS-TestingData-Part1/Part1/",
+            "02 - And The Body Will Die-8.txt",
+        )
     )
     pred_inst_data_test = irmas.load_pred_inst(pred_inst_ann_path_test)
     assert type(pred_inst_data_test) is list

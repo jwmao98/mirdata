@@ -12,9 +12,11 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/good_sounds/"),
-            "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/good_sounds/",
+                "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+            )
         ),
         "track_id": "1",
     }
@@ -76,9 +78,11 @@ def test_track_properties_and_attributes():
     ground_truth_take = {
         "id": 1,
         "microphone": "akg",
-        "filename": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/good_sounds/"),
-            "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+        "filename": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/good_sounds/",
+                "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+            )
         ),
         "original_filename": "AKG-costado-Left-01 render 001",
         "freesound_id": None,
@@ -139,9 +143,11 @@ def test_to_jams():
     ground_truth_take = {
         "id": 1,
         "microphone": "akg",
-        "filename": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/good_sounds/"),
-            "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+        "filename": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/good_sounds/",
+                "good-sounds/sound_files/flute_almudena_reference/akg/0000.wav",
+            )
         ),
         "original_filename": "AKG-costado-Left-01 render 001",
         "freesound_id": None,

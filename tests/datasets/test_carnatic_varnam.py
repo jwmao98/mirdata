@@ -17,29 +17,33 @@ def test_track():
 
     expected_attributes = {
         "track_id": "dharini_abhogi",
-        "audio_path": os.path.normpath(
-            os.path.join(
-                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/",
-                "Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3",
-            )
+        "audio_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
+            ),
+            os.path.normpath(
+                "Audio/223578__gopalkoduri__carnatic-varnam-by-dharini-in-abhogi-raaga.mp3"
+            ),
         ),
-        "taala_path": os.path.normpath(
-            os.path.join(
-                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/",
-                "Notations_Annotations/annotations/taalas/abhogi/dharini.svl",
-            )
+        "taala_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
+            ),
+            os.path.normpath(
+                "Notations_Annotations/annotations/taalas/abhogi/dharini.svl"
+            ),
         ),
-        "notation_path": os.path.normpath(
-            os.path.join(
-                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/",
-                "Notations_Annotations/notations/abhogi.yaml",
-            )
+        "notation_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
+            ),
+            os.path.normpath("Notations_Annotations/notations/abhogi.yaml"),
         ),
-        "structure_path": os.path.normpath(
-            os.path.join(
-                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/",
-                "Notations_Annotations/notations/abhogi/dharini.yaml",
-            )
+        "structure_path": os.path.join(
+            os.path.normpath(
+                "tests/resources/mir_datasets/compmusic_carnatic_varnam/carnatic_varnam_1.1/"
+            ),
+            os.path.normpath("Notations_Annotations/notations/abhogi/dharini.yaml"),
         ),
         "artist": "dharini",
         "raaga": "abhogi",

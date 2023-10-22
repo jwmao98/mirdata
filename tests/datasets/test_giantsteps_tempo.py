@@ -13,17 +13,22 @@ def test_track():
     track = dataset.track(default_trackid)
 
     expected_attributes = {
-        "audio_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/giantsteps_tempo/"),
-            "audio/28952.LOFI.mp3",
+        "audio_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/giantsteps_tempo/", "audio/28952.LOFI.mp3"
+            )
         ),
-        "annotation_v1_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/giantsteps_tempo/"),
-            "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams",
+        "annotation_v1_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/giantsteps_tempo/",
+                "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams",
+            )
         ),
-        "annotation_v2_path": os.path.join(
-            os.path.normpath("tests/resources/mir_datasets/giantsteps_tempo/"),
-            "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations_v2/jams/28952.LOFI.jams",
+        "annotation_v2_path": os.path.normpath(
+            os.path.join(
+                "tests/resources/mir_datasets/giantsteps_tempo/",
+                "giantsteps-tempo-dataset-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations_v2/jams/28952.LOFI.jams",
+            )
         ),
         "title": "28952",
         "track_id": "113",
@@ -44,7 +49,7 @@ def test_track():
 
 
 def test_load_genre():
-    genre_path = (
+    genre_path = os.path.normpath(
         "tests/resources/mir_datasets/giantsteps_tempo/giantsteps-tempo-dataset"
         "-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams"
     )
@@ -59,7 +64,7 @@ def test_load_genre():
 
 
 def test_load_tempo():
-    tempo_path = (
+    tempo_path = os.path.normpath(
         "tests/resources/mir_datasets/giantsteps_tempo/giantsteps-tempo-dataset"
         "-0b7d47ba8cae59d3535a02e3db69e2cf6d0af5bb/annotations/jams/28952.LOFI.jams"
     )
