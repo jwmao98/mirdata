@@ -24,7 +24,7 @@
     The dataset is made available by Google LLC under a Creative Commons
     Attribution Non-Commercial Share-Alike 4.0 (CC BY-NC-SA 4.0) license.
 
-    This loader supports MAESTRO version 2.
+    This loader supports MAESTRO version 3.
 
     For more details, please visit: https://magenta.tensorflow.org/datasets/maestro
 
@@ -55,30 +55,30 @@ BIBTEX = """@inproceedings{
 """
 
 INDEXES = {
-    "default": "2.0.0",
-    "test": "2.0.0",
-    "2.0.0": core.Index(filename="maestro_index_2.0.0.json"),
+    "default": "3.0.0",
+    "test": "3.0.0",
+    "3.0.0": core.Index(filename="maestro_index_3.0.0.json"),
 }
 
 REMOTES = {
     "all": download_utils.RemoteFileMetadata(
-        filename="maestro-v2.0.0.zip",
-        url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.zip",
-        checksum="7a6c23536ebcf3f50b1f00ac253886a7",
-        unpack_directories=["maestro-v2.0.0"],
+        filename="maestro-v3.0.0.zip",
+        url="https://storage.googleapis.com/magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0.zip",
+        checksum="41941abdcd786c8066d532002e3b79b9",
+        unpack_directories=["maestro-v3.0.0"],
     ),
     "midi": download_utils.RemoteFileMetadata(
-        filename="maestro-v2.0.0-midi.zip",
-        url="https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0-midi.zip",
-        checksum="8a45cc678a8b23cd7bad048b1e9034c5",
-        unpack_directories=["maestro-v2.0.0"],
+        filename="maestro-v3.0.0-midi.zip",
+        url="https://storage.googleapis.com/magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0-midi.zip",
+        checksum="b7656589d0ff8f1170d13f69837390ba",
+        unpack_directories=["maestro-v3.0.0"],
     ),
     "metadata": download_utils.RemoteFileMetadata(
-        filename="maestro-v2.0.0.json",
+        filename="maestro-v3.0.0.json",
         url=(
-            "https://storage.googleapis.com/magentadata/datasets/maestro/v2.0.0/maestro-v2.0.0.json"
+            "https://storage.googleapis.com/magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0.json"
         ),
-        checksum="576172af1cdc4efddcf0be7d260d48f7",
+        checksum="74e2015e0c667f5a59c2fb168128ae52",
     ),
 }
 
@@ -210,7 +210,7 @@ class Dataset(core.Dataset):
 
     @core.cached_property
     def _metadata(self):
-        metadata_path = os.path.join(self.data_home, "maestro-v2.0.0.json")
+        metadata_path = os.path.join(self.data_home, "maestro-v3.0.0.json")
 
         try:
             with open(metadata_path, "r") as fhandle:
